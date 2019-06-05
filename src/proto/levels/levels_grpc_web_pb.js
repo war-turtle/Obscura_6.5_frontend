@@ -1,0 +1,145 @@
+/**
+ * @fileoverview gRPC-Web generated client stub for levels
+ * @enhanceable
+ * @public
+ */
+
+// GENERATED CODE -- DO NOT EDIT!
+
+
+
+const grpc = {};
+grpc.web = require('grpc-web');
+
+const proto = {};
+proto.levels = require('./levels_pb.js');
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.levels.LevelClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+  /**
+   * @private @const {?Object} The credentials to be used to connect
+   *    to the server
+   */
+  this.credentials_ = credentials;
+
+  /**
+   * @private @const {?Object} Options for the client
+   */
+  this.options_ = options;
+};
+
+
+/**
+ * @param {string} hostname
+ * @param {?Object} credentials
+ * @param {?Object} options
+ * @constructor
+ * @struct
+ * @final
+ */
+proto.levels.LevelPromiseClient =
+    function(hostname, credentials, options) {
+  if (!options) options = {};
+  options['format'] = 'text';
+
+  /**
+   * @private @const {!grpc.web.GrpcWebClientBase} The client
+   */
+  this.client_ = new grpc.web.GrpcWebClientBase(options);
+
+  /**
+   * @private @const {string} The hostname
+   */
+  this.hostname_ = hostname;
+
+  /**
+   * @private @const {?Object} The credentials to be used to connect
+   *    to the server
+   */
+  this.credentials_ = credentials;
+
+  /**
+   * @private @const {?Object} Options for the client
+   */
+  this.options_ = options;
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.levels.LevelRequest,
+ *   !proto.levels.LevelResponse>}
+ */
+const methodInfo_Level_GetLevels = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.levels.LevelResponse,
+  /** @param {!proto.levels.LevelRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.levels.LevelResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.levels.LevelRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.levels.LevelResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.levels.LevelResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.levels.LevelClient.prototype.getLevels =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/levels.Level/GetLevels',
+      request,
+      metadata || {},
+      methodInfo_Level_GetLevels,
+      callback);
+};
+
+
+/**
+ * @param {!proto.levels.LevelRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.levels.LevelResponse>}
+ *     A native promise that resolves to the response
+ */
+proto.levels.LevelPromiseClient.prototype.getLevels =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/levels.Level/GetLevels',
+      request,
+      metadata || {},
+      methodInfo_Level_GetLevels);
+};
+
+
+module.exports = proto.levels;
+

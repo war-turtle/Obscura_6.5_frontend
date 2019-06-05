@@ -11,3 +11,10 @@ services:
     volumes:
       - /app/node_modules
       - ".:/app"
+  envoy:
+    build:
+      context: .
+      dockerfile: envoy.Dockerfile
+    image: obscura-envoy-proxy
+    ports:
+      - "8080:8080"

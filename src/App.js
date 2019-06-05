@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+const { PlayerRequest } = require('./proto/players/players_pb');
+const { PlayerClient } = require('./proto/players/players_grpc_web_pb');
+
+const fetchData = () => {
+  const playerService = new PlayerClient('http://localhost:8080', null, null);
+
+  const request = new PlayerRequest();
+  request.setId(1);
+
+  playerService.getPlayers(request, {}, (err, response) => {
+    if (err) {
+      console.log("########", err);
+    }
+    if (response) {
+      console.log("@@@@@@@@", response.toObject());
+    }
+  })
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={fetchData}>Click on me</button>
     </div>
   );
 }
