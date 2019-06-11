@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for players
+ * @fileoverview gRPC-Web generated client stub for users
  * @enhanceable
  * @public
  */
@@ -12,7 +12,7 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 const proto = {};
-proto.players = require('./players_pb.js');
+proto.users = require('./users_pb.js');
 
 /**
  * @param {string} hostname
@@ -22,7 +22,7 @@ proto.players = require('./players_pb.js');
  * @struct
  * @final
  */
-proto.players.PlayerClient =
+proto.users.UserClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -58,7 +58,7 @@ proto.players.PlayerClient =
  * @struct
  * @final
  */
-proto.players.PlayerPromiseClient =
+proto.users.UserPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -89,57 +89,57 @@ proto.players.PlayerPromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.players.PlayerRequest,
- *   !proto.players.PlayerResponse>}
+ *   !proto.users.SignInRequest,
+ *   !proto.users.SignInResponse>}
  */
-const methodInfo_Player_GetPlayers = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.players.PlayerResponse,
-  /** @param {!proto.players.PlayerRequest} request */
+const methodInfo_User_SignIn = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.users.SignInResponse,
+  /** @param {!proto.users.SignInRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.players.PlayerResponse.deserializeBinary
+  proto.users.SignInResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.players.PlayerRequest} request The
+ * @param {!proto.users.SignInRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.players.PlayerResponse)}
+ * @param {function(?grpc.web.Error, ?proto.users.SignInResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.players.PlayerResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.users.SignInResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.players.PlayerClient.prototype.getPlayers =
+proto.users.UserClient.prototype.signIn =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/players.Player/GetPlayers',
+      '/users.User/SignIn',
       request,
       metadata || {},
-      methodInfo_Player_GetPlayers,
+      methodInfo_User_SignIn,
       callback);
 };
 
 
 /**
- * @param {!proto.players.PlayerRequest} request The
+ * @param {!proto.users.SignInRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.players.PlayerResponse>}
+ * @return {!Promise<!proto.users.SignInResponse>}
  *     A native promise that resolves to the response
  */
-proto.players.PlayerPromiseClient.prototype.getPlayers =
+proto.users.UserPromiseClient.prototype.signIn =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/players.Player/GetPlayers',
+      '/users.User/SignIn',
       request,
       metadata || {},
-      methodInfo_Player_GetPlayers);
+      methodInfo_User_SignIn);
 };
 
 
-module.exports = proto.players;
+module.exports = proto.users;
 

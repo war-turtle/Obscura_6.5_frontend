@@ -1,31 +1,16 @@
 import React from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+
+import LoginComponent from './components/Login';
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
 
-const { PlayerRequest } = require('./proto/players/players_pb');
-const { PlayerClient } = require('./proto/players/players_grpc_web_pb');
-
-const fetchData = () => {
-  const playerService = new PlayerClient('http://localhost:8080', null, null);
-
-  const request = new PlayerRequest();
-  request.setId(1);
-
-  playerService.getPlayers(request, {}, (err, response) => {
-    if (err) {
-      console.log("########", err);
-    }
-    if (response) {
-      console.log("@@@@@@@@", response.toObject());
-    }
-  })
-};
-
-function App() {
-  return (
+const App = () => (
+  <Router>
     <div>
-      <button onClick={fetchData}>Click on me</button>
+      <Route path="/" exact component={LoginComponent} />
     </div>
-  );
-}
+  </Router>
+);
 
 export default App;
