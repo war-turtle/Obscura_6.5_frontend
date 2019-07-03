@@ -1,15 +1,17 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
 import initialState from './state';
 
 const userReducer = (state = initialState.user, action) => {
   switch (action.type) {
     case 'SIGN_IN':
+    case 'USER_FROM_LOCAL_STORE':
+    case 'ON_BOARD':
       return {
         ...state,
-        isSignedIn: true,
-        name: action.payload.name,
-        email: action.payload.email,
+        IsSignedIn: true,
+        ...action.payload,
       };
     case 'CLEAR_USER':
       return { ...initialState.user };
@@ -18,4 +20,4 @@ const userReducer = (state = initialState.user, action) => {
   }
 };
 
-export default combineReducers({ user: userReducer });
+export default combineReducers({ user: userReducer, form: formReducer });

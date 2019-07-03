@@ -18,24 +18,24 @@ static_resources:
                   name: obscura_proxy
                   virtual_hosts:
                     - name: obscura_service
-                      domains: ['*']
+                      domains: ["*"]
                       routes:
-                        - match: { prefix: '/users/' }
+                        - match: { prefix: "/users/" }
                           route:
-                            prefix_rewrite: '/'
+                            prefix_rewrite: "/"
                             cluster: users_service
                             max_grpc_timeout: 0s
-                        - match: { prefix: '/players/' }
+                        - match: { prefix: "/players/" }
                           route:
-                            prefix_rewrite: '/'
+                            prefix_rewrite: "/"
                             cluster: levels_service
                             max_grpc_timeout: 0s
                       cors:
                         allow_origin:
-                          - '*'
+                          - "*"
                         allow_methods: GET, PUT, DELETE, POST, OPTIONS
-                        allow_headers: keep-alive,user-agent,cache-control,content-type,content-transfer-encoding,custom-header-1,x-accept-content-transfer-encoding,x-accept-response-streaming,x-user-agent,x-grpc-web,grpc-timeout
-                        max_age: '1728000'
+                        allow_headers: keep-alive,user-agent,cache-control,content-type,content-transfer-encoding,custom-header-1,x-accept-content-transfer-encoding,x-accept-response-streaming,x-user-agent,x-grpc-web,grpc-timeout,authorization
+                        max_age: "1728000"
                         expose_headers: custom-header-1,grpc-status,grpc-message
                         enabled: true
                 http_filters:

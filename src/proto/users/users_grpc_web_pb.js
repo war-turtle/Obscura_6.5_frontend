@@ -90,15 +90,15 @@ proto.users.UserPromiseClient =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.users.SignInRequest,
- *   !proto.users.SignInResponse>}
+ *   !proto.users.JwtResponse>}
  */
 const methodInfo_User_SignIn = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.users.SignInResponse,
+  proto.users.JwtResponse,
   /** @param {!proto.users.SignInRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.users.SignInResponse.deserializeBinary
+  proto.users.JwtResponse.deserializeBinary
 );
 
 
@@ -107,9 +107,9 @@ const methodInfo_User_SignIn = new grpc.web.AbstractClientBase.MethodInfo(
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.users.SignInResponse)}
+ * @param {function(?grpc.web.Error, ?proto.users.JwtResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.users.SignInResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.users.JwtResponse>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.users.UserClient.prototype.signIn =
@@ -128,7 +128,7 @@ proto.users.UserClient.prototype.signIn =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.users.SignInResponse>}
+ * @return {!Promise<!proto.users.JwtResponse>}
  *     A native promise that resolves to the response
  */
 proto.users.UserPromiseClient.prototype.signIn =
@@ -138,6 +138,61 @@ proto.users.UserPromiseClient.prototype.signIn =
       request,
       metadata || {},
       methodInfo_User_SignIn);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.users.OnBoardRequest,
+ *   !proto.users.JwtResponse>}
+ */
+const methodInfo_User_OnBoard = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.users.JwtResponse,
+  /** @param {!proto.users.OnBoardRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.users.JwtResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.users.OnBoardRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.users.JwtResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.users.JwtResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.users.UserClient.prototype.onBoard =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/users.User/OnBoard',
+      request,
+      metadata || {},
+      methodInfo_User_OnBoard,
+      callback);
+};
+
+
+/**
+ * @param {!proto.users.OnBoardRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.users.JwtResponse>}
+ *     A native promise that resolves to the response
+ */
+proto.users.UserPromiseClient.prototype.onBoard =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/users.User/OnBoard',
+      request,
+      metadata || {},
+      methodInfo_User_OnBoard);
 };
 
 

@@ -1,7 +1,10 @@
 export default {
   user: {
-    isSignedIn: false,
-    name: '',
-    email: '',
+    IsSignedIn: false,
+    Username: '',
+    Email: '',
+    College: '',
+    Phone: '',
+    Onboard: false,
   },
 };

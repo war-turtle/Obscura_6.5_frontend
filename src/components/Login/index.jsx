@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 
 import config from '../../config';
 import { signIn } from '../../actions';
-import Toast from '../Toast';
+import Toast from '../shared/Toast';
 
-class Login extends Component {
+class LoginComponent extends Component {
   state = { buttonLoading: true };
 
-  componentDidMount() {
-    console.log(this.props.isSignedIn);
+  componentWillMount() {
     window.gapi.load('client:auth2', () => {
       window.gapi.client
         .init({
@@ -28,8 +27,14 @@ class Login extends Component {
   }
 
   componentDidUpdate() {
-    const { isSignedIn } = this.props;
-    console.log(isSignedIn);
+    const { IsSignedIn, history, Onboard } = this.props;
+    if (IsSignedIn) {
+      if (!Onboard) {
+        history.push('/onboard');
+      } else {
+        history.push('/dashboard');
+      }
+    }
   }
 
   onSignIn = async () => {
@@ -57,7 +62,8 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  isSignedIn: state.user.isSignedIn,
+  IsSignedIn: state.user.IsSignedIn,
+  Onboard: state.user.Onboard,
 });
 
 export default connect(
@@ -65,4 +71,4 @@ export default connect(
   {
     signIn,
   },
-)(Login);
+)(LoginComponent);
