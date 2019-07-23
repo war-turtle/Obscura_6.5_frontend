@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import config from '../../config';
-import { signIn } from '../../actions';
+import { signIn } from '../../actions/user';
 import Toast from '../shared/Toast';
+
+import './login.css';
 
 class LoginComponent extends Component {
   state = { buttonLoading: true };
@@ -48,15 +50,20 @@ class LoginComponent extends Component {
 
   buttonClasses = () => {
     const { buttonLoading } = this.state;
-    return buttonLoading ? 'ui primary disabled loading button' : 'ui primary basic button';
+    return buttonLoading ? 'large ui red disabled loading button' : 'large ui red button';
   };
 
   render() {
     return (
-      <button type="button" className={this.buttonClasses()} onClick={this.onSignIn}>
-        <i className="google icon" />
-        Google Login
-      </button>
+      <div className="one-page-middle">
+        <div style={{ width: '100%', textAlign: 'center' }}>
+          <h1 className="heading">ObscurA</h1>
+          <button type="button" className={this.buttonClasses()} onClick={this.onSignIn}>
+            <i className="google icon" />
+            Google Login
+          </button>
+        </div>
+      </div>
     );
   }
 }

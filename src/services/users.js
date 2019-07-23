@@ -1,6 +1,6 @@
 import config from '../config';
 
-const { SignInRequest, OnBoardRequest } = require('../proto/users/users_pb');
+const { SignInRequest, OnBoardRequest, GetUserRequest } = require('../proto/users/users_pb');
 const { UserClient } = require('../proto/users/users_grpc_web_pb');
 
 const userService = new UserClient(config.UsersBackend, null, null);
@@ -31,6 +31,23 @@ export const onBoardUser = (user) => {
 
   return new Promise((resolve, reject) => {
     userService.onBoard(request, { Authorization: `jwt ${token}` }, (err, res) => {
+      if (res) {
+        resolve(res.toObject());
+      } else if (err) {
+        reject(err);
+      }
+    });
+  });
+};
+
+export const getUser = (userID) => {
+  const request = new GetUserRequest();
+  request.setUserid(userID);
+
+  const token = window.localStorage.getItem('token');
+
+  return new Promise((resolve, reject) => {
+    userService.getUser(request, { Authorization: `jwt ${token}` }, (err, res) => {
       if (res) {
         resolve(res.toObject());
       } else if (err) {

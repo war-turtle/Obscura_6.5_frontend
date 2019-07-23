@@ -1,20 +1,8 @@
 import jwt from 'jsonwebtoken';
-import { signInUser, onBoardUser } from '../services/users';
-import Toast from '../components/shared/Toast';
-import history from '../history';
 
-const errorHandler = (err) => {
-  switch (err.code) {
-    case 16:
-      Toast('unauthenticated user', 'error');
-      break;
-    case 2:
-      Toast(err.message, 'error');
-      break;
-    default:
-      Toast('something went wrong', 'error');
-  }
-};
+import { signInUser, onBoardUser, getUser as getUserService } from '../services/users';
+import history from '../history';
+import errorHandler from './errorHandler';
 
 export const signIn = idToken => (dispatch) => {
   signInUser(idToken)
@@ -33,6 +21,7 @@ export const signIn = idToken => (dispatch) => {
 export const onBoard = user => (dispatch, getState) => {
   if (!getState() || !getState().user || !getState().user.Email) {
     dispatch({ type: 'CLEAR_USER', payload: 'missing state' });
+    return;
   } else {
     user.email = getState().user.Email;
   }
@@ -55,6 +44,19 @@ export const userFromLocalStore = user => ({
 });
 
 export const clearUser = () => (dispatch) => {
-  dispatch({ type: 'CLEAR_USER' });
   history.push('/');
+  dispatch({ type: 'CLEAR_USER' });
+};
+
+export const getUser = () => (dispatch, getState) => {
+  getUserService(getState().user.ID)
+    .then((res) => {
+      window.localStorage.setItem('token', res.jwt);
+      const user = jwt.decode(res.jwt);
+      dispatch({ type: 'GET_USER', payload: user });
+    })
+    .catch((err) => {
+      errorHandler(err);
+      dispatch(clearUser());
+    });
 };
