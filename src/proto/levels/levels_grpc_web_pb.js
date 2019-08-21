@@ -92,7 +92,7 @@ proto.levels.LevelPromiseClient =
  *   !proto.levels.LevelRequest,
  *   !proto.levels.LevelResponse>}
  */
-const methodInfo_Level_GetLevels = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Level_GetLevel = new grpc.web.AbstractClientBase.MethodInfo(
   proto.levels.LevelResponse,
   /** @param {!proto.levels.LevelRequest} request */
   function(request) {
@@ -112,13 +112,13 @@ const methodInfo_Level_GetLevels = new grpc.web.AbstractClientBase.MethodInfo(
  * @return {!grpc.web.ClientReadableStream<!proto.levels.LevelResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.levels.LevelClient.prototype.getLevels =
+proto.levels.LevelClient.prototype.getLevel =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/levels.Level/GetLevels',
+      '/levels.Level/GetLevel',
       request,
       metadata || {},
-      methodInfo_Level_GetLevels,
+      methodInfo_Level_GetLevel,
       callback);
 };
 
@@ -131,13 +131,13 @@ proto.levels.LevelClient.prototype.getLevels =
  * @return {!Promise<!proto.levels.LevelResponse>}
  *     A native promise that resolves to the response
  */
-proto.levels.LevelPromiseClient.prototype.getLevels =
+proto.levels.LevelPromiseClient.prototype.getLevel =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/levels.Level/GetLevels',
+      '/levels.Level/GetLevel',
       request,
       metadata || {},
-      methodInfo_Level_GetLevels);
+      methodInfo_Level_GetLevel);
 };
 
 

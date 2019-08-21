@@ -1,11 +1,17 @@
 .one-page-middle {
+  position: relative;
   display: flex;
   height: 100vh;
   width: 100vw;
   align-items: center;
+  z-index: 1;
 }
 
-.heading {
-  text-align: center;
-  font-size: 50px;
+.canvas {
+  position: fixed;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
 }

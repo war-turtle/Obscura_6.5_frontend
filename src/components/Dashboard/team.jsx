@@ -19,13 +19,9 @@ class Team extends Component {
   render() {
     return (
       <div style={{ textAlign: 'center' }}>
-        <h1 className="ui huge header" style={{ margin: '30px 0px' }}>
-          Dashboard
-        </h1>
-
         <Modal
           trigger={(
-            <button className="ui red large button">
+            <button className="ui white basic large button">
               <i className="plus icon" />
               Create a Team
             </button>
@@ -47,8 +43,8 @@ class Team extends Component {
           </Modal.Actions>
         </Modal>
 
-        <div className="ui horizontal divider">Or</div>
-        <h1 className="ui large header">Join a Team</h1>
+        <div className="ui horizontal divider obscura-text-color">Or</div>
+        <h1 className="obscura-sub-heading obscura-text-color">Join a Team</h1>
 
         <AllTeams status={false}/>
       </div>

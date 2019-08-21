@@ -1,0 +1,45 @@
+.ui.table {
+  background-color: transparent !important;
+  border: 2px white solid !important;
+  font-weight: 700;
+  font-size: 15px !important;
+}
+
+.ui.table tr td {
+  border-top: 2px solid white !important;
+}
+
+.ui.table thead tr th {
+  background-color: white !important;
+  color: var(--bg-color);
+}
+
+.ui.table tr {
+  color: white !important;
+}
+
+.ui.table tr:hover {
+  background-color: white !important;
+  color: var(--bg-color) !important;
+}
+
+.ui.table tfoot tr:hover {
+  background-color: transparent !important;
+}
+
+.ui.table thead th {
+  background-color: transparent !important;
+  /* color: white !important; */
+  font-weight: 900 !important;
+}
+
+.ui.table tfoot tr th {
+  border-top: 2px solid white !important;
+  background-color: transparent !important;
+}
+
+.ui.table tfoot tr th div {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+}

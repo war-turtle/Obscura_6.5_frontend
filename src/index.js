@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 
 import App from './App';
 import reducers from './reducers';
-import './index.css';
 
 // eslint-disable-next-line no-underscore-dangle
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -32,8 +32,8 @@ class OnboardComponent extends Component {
     return (
       <div className="ui field">
         <div className="ui corner labeled input">
-          <div className={`ui label ${valid && 'green basic'}`}>{label}</div>
-          <input {...input} placeholder={placeholder} />
+          <div className={`ui label ${valid ? 'green': 'red'}`}>{label}</div>
+          <input {...input} className="obscura-input" placeholder={placeholder} />
           <div className="ui red corner label">
             <i className="asterisk icon" />
           </div>
@@ -50,12 +50,12 @@ class OnboardComponent extends Component {
   render() {
     return (
       <div style={{ overflow: 'hidden' }}>
-        <div className="ui centered huge header" style={{ margin: '30px 0px' }}>
+        <div className="obscura-sub-heading obscura-text-color">
           Just Give Us Some Basic Info
         </div>
         <div className="ui two column grid">
           <div className="tablet computer only column">
-            <Cat size={320} mood={`${this.props.valid ? 'lovestruck' : 'ko'}`} color="#03a9f4" />
+            <Cat size={320} mood={`${this.props.valid ? 'lovestruck' : 'ko'}`} color="#fff" />
           </div>
           <div
             className="sixteen wide mobile eight wide tablet eight wide computer middle aligned column"
@@ -84,7 +84,7 @@ class OnboardComponent extends Component {
               />
 
               <button
-                className={`ui green button ${!this.props.valid && 'disabled'}`}
+                className={`ui basic white button ${!this.props.valid && 'disabled'}`}
                 type="submit"
               >
                 Submit

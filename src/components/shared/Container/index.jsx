@@ -10,6 +10,16 @@ class Container extends Component {
   state = { userLoaded: false };
 
   componentDidMount() {
+    const colors = [
+      '#f8bbd0',
+      '#e1bee7',
+      '#bbdefb',
+      '#b2dfdb',
+      '#c5e1a5',
+      '#ffcc80',
+      '#bdbdbd',
+    ]
+    document.documentElement.style.setProperty('--bg-color', colors[Math.floor(Math.random() * colors.length)]);
     const {
       IsSignedIn, clearUser, userFromLocalStore, teamid, getTeam,
     } = this.props;

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { getAllTeams, joinTeam } from '../../services/team';
 import Toast from '../shared/Toast';
 
+import './allTeams.css';
+
 class AllTeams extends Component {
   state = {
     teams: [],
@@ -46,10 +48,10 @@ class AllTeams extends Component {
   joinTeam = (teamID) => {
     joinTeam(teamID, this.props.userID)
       .then((res) => {
-        Toast("request sent successfully", 'success')
+        Toast('request sent successfully', 'success');
       })
       .catch((err) => {
-        Toast("please try again later", 'error')
+        Toast(err.message, 'error');
       });
   };
 
@@ -58,15 +60,9 @@ class AllTeams extends Component {
       <table className="ui divided striped table" style={{ marginBottom: '30px' }}>
         <thead>
           <tr>
-            <th>
-              Name
-            </th>
-            <th>
-              Level
-            </th>
-            {!this.props.status && (
-              <th></th>
-            )}
+            <th>Name</th>
+            <th>Level</th>
+            {!this.props.status && <th />}
           </tr>
         </thead>
         <tbody>
@@ -76,7 +72,14 @@ class AllTeams extends Component {
               <td>{team.level}</td>
               {!this.props.status && (
                 <td className="right aligned">
-                  <button className="ui green button" onClick={() => {this.joinTeam(team.id)}}>Join</button>
+                  <button
+                    className="ui green button"
+                    onClick={() => {
+                      this.joinTeam(team.id);
+                    }}
+                  >
+                    Join
+                  </button>
                 </td>
               )}
             </tr>
@@ -85,13 +88,15 @@ class AllTeams extends Component {
             && Array.apply(null, Array(10)).map((e, i) => (
               <tr key={i}>
                 <td>
-                  <div className="ui placeholder">
-                    <div className="very short line" />
+                  <div className="ui segment" style={{backgroundColor: 'transparent', border: '0px'}}>
+                    <div className="ui active loader" />
+                    <br />
                   </div>
                 </td>
                 <td className="right aligned">
-                  <div className="ui placeholder">
-                    <div className="line" />
+                  <div className="ui segment" style={{backgroundColor: 'transparent', border: '0px'}}>
+                    <div className="ui active loader" />
+                    <br />
                   </div>
                 </td>
               </tr>
@@ -104,7 +109,7 @@ class AllTeams extends Component {
                 <div className="ui right floated pagination menu">
                   {this.state.page > 1 && (
                     <button
-                      className="ui icon item button basic"
+                      className="ui icon item white button basic"
                       onClick={() => {
                         this.getNewPage(this.state.page - 1);
                       }}
@@ -115,7 +120,7 @@ class AllTeams extends Component {
                   {Array.apply(null, Array(Math.ceil(this.state.totalTeams / 10))).map(
                     (elem, i) => (
                       <button
-                        className="ui item button basic"
+                        className="ui item white button basic"
                         key={i}
                         onClick={() => {
                           this.getNewPage(i + 1);
@@ -127,7 +132,7 @@ class AllTeams extends Component {
                   )}
                   {this.state.page !== Math.ceil(this.state.totalTeams / 10) && (
                     <button
-                      className="ui button basic icon item"
+                      className="ui white button basic icon item"
                       onClick={() => {
                         this.getNewPage(this.state.page + 1);
                       }}

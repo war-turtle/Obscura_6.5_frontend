@@ -1,33 +1,47 @@
-.App {
+:root {
+  --bg-color: #ff9e80;
+}
+
+body {
+  background-color: var(--bg-color) !important;
+}
+
+.ui.white.basic.button {
+  color: white !important;
+  border: white 2px solid;
+  box-shadow: none;
+}
+
+.ui.white.basic.button:hover {
+  background-color: white !important;
+  box-shadow: none;
+  color: var(--bg-color) !important;
+}
+
+.ui.basic.label {
+  background-color: transparent !important;
+}
+
+.obscura-heading {
+  margin: 30px 0px !important;
   text-align: center;
+  font-size: 50px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.obscura-sub-heading {
+  font-size: 30px;
+  text-align: center;
+  margin: 30px 0px !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.obscura-text-color {
+  text-align: center;
+  color: #fff !important;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.obscura-input {
+  color: white !important;
+  font-weight: 700;
+  background-color: transparent !important;
+  border: 2px solid white !important;
 }

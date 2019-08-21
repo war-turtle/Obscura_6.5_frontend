@@ -14,14 +14,14 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
+        <h1 className="obscura-heading obscura-text-color">
+          Dashboard
+        </h1>
         {parseInt(this.props.userTeamID) === 0 ? (
           <Team />
         ) : (
           <div>
-            <h1 className="ui centered header" style={{ margin: '50px 0' }}>
-              Dashboard
-            </h1>
-            <h2 className="ui centered header">Your Team</h2>
+            <h2 className="obscura-sub-heading obscura-text-color">Your Team</h2>
             <table className="ui divided table">
               <thead>
                 <tr>
@@ -65,7 +65,7 @@ class Dashboard extends Component {
                 </tbody>
               </table>
             )}
-            <h2 className="ui header centered">
+            <h2 className="obscura-sub-heading obscura-text-color">
               Other teams
             </h2>
             <AllTeams status={true}/>
