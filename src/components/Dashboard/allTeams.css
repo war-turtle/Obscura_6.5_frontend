@@ -11,7 +11,7 @@
 
 .ui.table thead tr th {
   background-color: white !important;
-  color: var(--bg-color);
+  color: var(--bg-color-secondary);
 }
 
 .ui.table tr {
@@ -20,7 +20,7 @@
 
 .ui.table tr:hover {
   background-color: white !important;
-  color: var(--bg-color) !important;
+  color: var(--bg-color-secondary) !important;
 }
 
 .ui.table tfoot tr:hover {

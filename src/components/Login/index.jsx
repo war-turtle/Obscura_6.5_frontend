@@ -30,15 +30,16 @@ class LoginComponent extends Component {
 
   componentDidMount() {
     const bgColors = [
-      '#f8bbd0',
-      '#e1bee7',
-      '#bbdefb',
-      '#b2dfdb',
-      '#c5e1a5',
-      '#ffcc80',
-      '#bdbdbd',
+      ['#ba68c8', '#4a148c'],
+      ['#e57373', '#b71c1c'],
+      ['#90caf9', '#0d47a1'],
+      ['#4db6ac', '#004d40'],
+      ['#a5d6a7', '#1b5e20'],
+      ['#ff8a65', '#bf360c']
     ]
-    document.documentElement.style.setProperty('--bg-color', bgColors[Math.floor(Math.random() * bgColors.length)]);
+    const rand = Math.floor(Math.random() * bgColors.length);
+    document.documentElement.style.setProperty('--bg-color-primary', bgColors[rand][0]);
+    document.documentElement.style.setProperty('--bg-color-secondary', bgColors[rand][1]);
 
     const canvas = this.refs.canvas;
     canvas.width = window.innerWidth;
@@ -97,7 +98,7 @@ class LoginComponent extends Component {
 
     function init() {
       for (let i = 0; i < circleCount; i++) {
-        const radius = Math.random() * 3;
+        const radius = Math.random() * 5;
         const x = Math.random() * (window.innerWidth - radius * 2) + radius;
         const y = Math.random() * (window.innerHeight - radius * 2) + radius;
         const dx = (Math.random() - 0.5) * 2;

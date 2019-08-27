@@ -1,9 +1,15 @@
 :root {
-  --bg-color: #ff9e80;
+  --bg-color-primary: #ba68c8;
+  --bg-color-secondary: #4a148c;
 }
 
 body {
-  background-color: var(--bg-color) !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+    var(--bg-color-primary),
+    var(--bg-color-secondary)
+  ) !important;
 }
 
 .ui.white.basic.button {
@@ -15,7 +21,7 @@ body {
 .ui.white.basic.button:hover {
   background-color: white !important;
   box-shadow: none;
-  color: var(--bg-color) !important;
+  color: var(--bg-color-secondary) !important;
 }
 
 .ui.basic.label {
