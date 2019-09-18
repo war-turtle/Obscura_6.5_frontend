@@ -33,12 +33,14 @@ const teamReducer = (state = initialState.team, action) => {
         user: { TeamID },
         name,
         creatorID,
+        imageNumber,
       } = action.payload;
       return {
         ...state,
         ID: TeamID,
         name,
         creatorID,
+        imageNumber,
       };
     case 'GET_TEAM':
       const team = action.payload;
@@ -49,6 +51,7 @@ const teamReducer = (state = initialState.team, action) => {
         level: team.level,
         creatorID: team.creatorid,
         requests: team.requestsList,
+        imageNumber: team.imagenumber,
       };
     case 'ACCEPT_USER':
       const userID = action.payload;

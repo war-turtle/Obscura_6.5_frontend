@@ -4,8 +4,11 @@ import { Field, reduxForm, isValid } from 'redux-form';
 import { Cat } from 'react-kawaii';
 
 import { clearUser, userFromLocalStore, onBoard } from '../../actions/user';
+import Toast from '../shared/Toast';
 
 class OnboardComponent extends Component {
+  state = { selectedImage: 0 };
+
   componentDidMount() {
     const { IsSignedIn, user, history } = this.props;
     if (!IsSignedIn) {
@@ -32,7 +35,7 @@ class OnboardComponent extends Component {
     return (
       <div className="ui field">
         <div className="ui corner labeled input">
-          <div className={`ui label ${valid ? 'green': 'red'}`}>{label}</div>
+          <div className={`ui label ${valid ? 'green' : 'red'}`}>{label}</div>
           <input {...input} className="obscura-input" placeholder={placeholder} />
           <div className="ui red corner label">
             <i className="asterisk icon" />
@@ -44,15 +47,53 @@ class OnboardComponent extends Component {
   };
 
   onSubmit = (formProps) => {
-    this.props.onBoard(formProps);
+    if (this.state.selectedImage === 0) {
+      Toast('select an avatar', 'error');
+    } else {
+      this.props.onBoard({ imageNumber: this.state.selectedImage, ...formProps });
+    }
+  };
+
+  selectImage = (i) => {
+    this.setState({ selectedImage: i });
   };
 
   render() {
     return (
       <div style={{ overflow: 'hidden' }}>
-        <div className="obscura-sub-heading obscura-text-color">
-          Just Give Us Some Basic Info
+        <div className="obscura-heading obscura-text-color">Just Give Us Some Basic Info</div>
+        <div className="obscura-sub-heading obscura-text-color">Pick an Avatar</div>
+        <div style={{ textAlign: 'center', margin: '20px 0px' }}>
+          {Array.from({ length: 30 }, (v, i) => {
+            if (i + 1 === this.state.selectedImage) {
+              return (
+                <img
+                  key={i}
+                  className="image"
+                  style={{
+                    padding: '5px 3px',
+                    width: '60px',
+                    border: '2px solid white',
+                    borderRadius: '2px',
+                  }}
+                  alt="avatar"
+                  src={`/images/${i + 1}.png`}
+                />
+              );
+            }
+            return (
+              <img
+                key={i}
+                className="image"
+                style={{ padding: '5px 3px', width: '60px' }}
+                src={`/images/${i + 1}.png`}
+                alt="avatar"
+                onClick={() => this.selectImage(i + 1)}
+              />
+            );
+          })}
         </div>
+
         <div className="ui two column grid">
           <div className="tablet computer only column">
             <Cat size={320} mood={`${this.props.valid ? 'lovestruck' : 'ko'}`} color="#fff" />

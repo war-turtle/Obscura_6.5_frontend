@@ -60,6 +60,7 @@ class AllTeams extends Component {
       <table className="ui divided striped table" style={{ marginBottom: '30px' }}>
         <thead>
           <tr>
+            <th>Avatar</th>
             <th>Name</th>
             <th>Level</th>
             {!this.props.status && <th />}
@@ -68,6 +69,9 @@ class AllTeams extends Component {
         <tbody>
           {this.state.teams.map(team => (
             <tr key={team.id}>
+              <td>
+                <img style={{width: '50px'}} src={`/images/${team.imagenumber}.png`} alt="avatar"/>
+              </td>
               <td>{team.name}</td>
               <td>{team.level}</td>
               {!this.props.status && (
@@ -88,13 +92,19 @@ class AllTeams extends Component {
             && Array.apply(null, Array(10)).map((e, i) => (
               <tr key={i}>
                 <td>
-                  <div className="ui segment" style={{backgroundColor: 'transparent', border: '0px'}}>
+                  <div
+                    className="ui segment"
+                    style={{ backgroundColor: 'transparent', border: '0px' }}
+                  >
                     <div className="ui active loader" />
                     <br />
                   </div>
                 </td>
                 <td className="right aligned">
-                  <div className="ui segment" style={{backgroundColor: 'transparent', border: '0px'}}>
+                  <div
+                    className="ui segment"
+                    style={{ backgroundColor: 'transparent', border: '0px' }}
+                  >
                     <div className="ui active loader" />
                     <br />
                   </div>

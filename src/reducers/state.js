@@ -7,6 +7,7 @@ export default {
     College: '',
     Phone: '',
     Onboard: false,
+    ImageNumber: 0,
   },
   team: {
     ID: '',
@@ -14,5 +15,6 @@ export default {
     creatorID: '',
     requests: [],
     level: 0,
+    imageNumber: 0,
   },
 };

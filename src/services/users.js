@@ -26,6 +26,7 @@ export const onBoardUser = (user) => {
   request.setCollege(user.college);
   request.setPhone(user.phone);
   request.setEmail(user.email);
+  request.setImagenumber(user.imageNumber);
 
   const token = window.localStorage.getItem('token');
 

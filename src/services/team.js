@@ -10,10 +10,11 @@ const { UserClient } = require('../proto/users/users_grpc_web_pb');
 
 const userService = new UserClient(config.UsersBackend, null, null);
 
-export const createTeam = (name, creatorID) => {
+export const createTeam = (name, creatorID, imageNumber) => {
   const request = new CreateTeamRequest();
   request.setName(name);
   request.setCreatorid(creatorID);
+  request.setImagenumber(imageNumber);
 
   const token = window.localStorage.getItem('token');
   return new Promise((resolve, reject) => {

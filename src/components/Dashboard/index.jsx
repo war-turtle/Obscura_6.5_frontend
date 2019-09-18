@@ -14,14 +14,19 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h1 className="obscura-heading obscura-text-color">
-          Dashboard
-        </h1>
+        <h1 className="obscura-heading obscura-text-color">Dashboard</h1>
         {parseInt(this.props.userTeamID) === 0 ? (
           <Team />
         ) : (
           <div>
             <h2 className="obscura-sub-heading obscura-text-color">Your Team</h2>
+            <div style={{ textAlign: 'center' }}>
+              <img
+                style={{ width: '100px' }}
+                src={`/images/${this.props.team.imageNumber}.png`}
+                alt="avatar"
+              />
+            </div>
             <table className="ui divided table">
               <thead>
                 <tr>
@@ -65,10 +70,8 @@ class Dashboard extends Component {
                 </tbody>
               </table>
             )}
-            <h2 className="obscura-sub-heading obscura-text-color">
-              Other teams
-            </h2>
-            <AllTeams status={true}/>
+            <h2 className="obscura-sub-heading obscura-text-color">Other teams</h2>
+            <AllTeams status />
           </div>
         )}
       </div>

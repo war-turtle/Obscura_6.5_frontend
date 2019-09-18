@@ -6,9 +6,9 @@ import {
 } from '../services/team';
 import errorHandler from './errorHandler';
 
-export const createTeam = name => (dispatch, getState) => {
+export const createTeam = (name, imageNumber) => (dispatch, getState) => {
   const creatorID = getState().user.ID;
-  createTeamService(name, creatorID)
+  createTeamService(name, creatorID, imageNumber)
     .then((res) => {
       window.localStorage.setItem('token', res.jwt);
       const user = jwt.decode(res.jwt);
@@ -16,6 +16,7 @@ export const createTeam = name => (dispatch, getState) => {
       res.name = name;
       res.creatorID = creatorID;
       res.user = user;
+      res.imageNumber = imageNumber;
       dispatch({ type: 'CREATE_TEAM', payload: res });
     })
     .catch((err) => {

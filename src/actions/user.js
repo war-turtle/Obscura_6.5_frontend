@@ -22,9 +22,9 @@ export const onBoard = user => (dispatch, getState) => {
   if (!getState() || !getState().user || !getState().user.Email) {
     dispatch({ type: 'CLEAR_USER', payload: 'missing state' });
     return;
-  } else {
-    user.email = getState().user.Email;
   }
+  user.email = getState().user.Email;
+
   onBoardUser(user)
     .then((res) => {
       window.localStorage.setItem('token', res.jwt);
@@ -33,7 +33,6 @@ export const onBoard = user => (dispatch, getState) => {
     })
     .catch((err) => {
       errorHandler(err);
-      console.log(err);
       dispatch({ type: 'CLEAR_USER', payload: err });
     });
 };
