@@ -4,7 +4,6 @@ import { Modal } from 'semantic-ui-react';
 
 import { createTeam } from '../../actions/team';
 import AllTeams from './allTeams';
-import Toast from '../shared/Toast';
 
 class Team extends Component {
   state = {selectedImage: 0, teamName: ''};
@@ -16,8 +15,6 @@ class Team extends Component {
   createTeam = () => {
     if (this.state.teamName !== '' && this.state.selectedImage !== 0) {
       this.props.createTeam(this.state.teamName, this.state.selectedImage);
-    } else {
-      Toast('Fill all the field', 'error');
     }
   };
 

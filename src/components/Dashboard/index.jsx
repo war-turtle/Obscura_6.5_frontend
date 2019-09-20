@@ -48,12 +48,15 @@ class Dashboard extends Component {
               <table className="ui divided stripped table">
                 <thead>
                   <tr>
-                    <th colSpan="2">Requests</th>
+                    <th colSpan="3">Requests</th>
                   </tr>
                 </thead>
                 <tbody>
                   {this.props.team.requests.map(request => (
                     <tr key={request.id}>
+                      <td>
+                        <img style={{width: '50px'}} src={`/images/${request.imagenumber}.png`} alt="avatar" />
+                      </td>
                       <td>{request.name}</td>
                       <td className="right aligned">
                         <button

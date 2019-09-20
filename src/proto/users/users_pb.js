@@ -1447,7 +1447,8 @@ proto.users.Requests.prototype.toObject = function(opt_includeInstance) {
 proto.users.Requests.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    name: jspb.Message.getFieldWithDefault(msg, 2, "")
+    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    imagenumber: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -1492,6 +1493,10 @@ proto.users.Requests.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setImagenumber(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1535,6 +1540,13 @@ proto.users.Requests.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getImagenumber();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -1565,6 +1577,21 @@ proto.users.Requests.prototype.getName = function() {
 /** @param {string} value */
 proto.users.Requests.prototype.setName = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int32 imageNumber = 3;
+ * @return {number}
+ */
+proto.users.Requests.prototype.getImagenumber = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.users.Requests.prototype.setImagenumber = function(value) {
+  jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
