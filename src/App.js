@@ -5,18 +5,20 @@ import LoginComponent from './components/Login';
 import OnboardComponent from './components/Onboard';
 import Dashboard from './components/Dashboard';
 import Level from './components/Level';
+import LevelComponent from './components/Level/level';
 import Container from './components/shared/Container';
 import history from './history';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 
 const App = () => (
-    <Router history={history}>
+  <Router history={history}>
     <Switch>
       <Route path="/" exact component={LoginComponent} />
-      <Container path="/onboard" component={OnboardComponent} />
+      <Route path="/onboard" component={OnboardComponent} />
       <Container path="/dashboard" component={Dashboard} />
-      <Container path="/level" component={Level} />
+      <Container exact path="/level" component={Level} />
+      <Container exact path="/level/:id" component={LevelComponent} />
     </Switch>
   </Router>
 );

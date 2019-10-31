@@ -10,10 +10,10 @@ class OnboardComponent extends Component {
   state = { selectedImage: 0 };
 
   componentDidMount() {
-    const { IsSignedIn, user, history } = this.props;
+    const { IsSignedIn, history } = this.props;
     if (!IsSignedIn) {
       history.push('/');
-    } else if (user.Onboard) {
+    } else if (this.props.Onboard) {
       history.push('/dashboard');
     }
   }
@@ -60,7 +60,7 @@ class OnboardComponent extends Component {
 
   render() {
     return (
-      <div style={{ overflow: 'hidden' }}>
+      <div style={{ overflow: 'hidden' }} className="ui container">
         <div className="obscura-heading obscura-text-color">Just Give Us Some Basic Info</div>
         <div className="obscura-sub-heading obscura-text-color">Pick an Avatar</div>
         <div style={{ textAlign: 'center', margin: '20px 0px' }}>

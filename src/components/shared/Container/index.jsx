@@ -7,7 +7,7 @@ import { userFromLocalStore, clearUser } from '../../../actions/user';
 import { getTeam } from '../../../actions/team';
 
 class Container extends Component {
-  state = { userLoaded: false };
+  user = {};
 
   componentDidMount() {
     const bgColors = [
@@ -23,7 +23,7 @@ class Container extends Component {
     document.documentElement.style.setProperty('--bg-color-secondary', bgColors[rand][1]);
 
     const {
-      IsSignedIn, clearUser, userFromLocalStore, teamid, getTeam,
+      IsSignedIn, clearUser, userFromLocalStore, getTeam,
     } = this.props;
     const token = window.localStorage.getItem('token');
     if (!token) {
@@ -34,11 +34,10 @@ class Container extends Component {
         clearUser();
       } else {
         this.user = user;
-        this.setState({ userLoaded: true });
         if (!IsSignedIn) {
           userFromLocalStore(user);
         }
-        if (parseInt(this.user.TeamID) !== 0 && teamid === '') {
+        if (parseInt(this.user.TeamID) !== 0 && this.props.teamid === '') {
           getTeam(this.user.TeamID);
         }
       }
@@ -49,15 +48,15 @@ class Container extends Component {
     const { component, ...rest } = this.props;
     return (
       <div className="ui container">
-        {this.state.userLoaded ? (
+        { parseInt(this.user.TeamID) !== 0 && this.props.teamid === '' ? (
+          <div className="ui active dimmer">
+            <div className="ui large loader" />
+          </div>
+        ) : (
           <Route
             {...rest}
             render={props => React.createElement(component, { user: this.user, ...props })}
           />
-        ) : (
-          <div className="ui active dimmer">
-            <div className="ui large loader" />
-          </div>
         )}
       </div>
     );

@@ -141,5 +141,60 @@ proto.levels.LevelPromiseClient.prototype.getLevel =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.levels.AnswerRequest,
+ *   !proto.levels.AnswerResponse>}
+ */
+const methodInfo_Level_CheckAnswer = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.levels.AnswerResponse,
+  /** @param {!proto.levels.AnswerRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.levels.AnswerResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.levels.AnswerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.levels.AnswerResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.levels.AnswerResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.levels.LevelClient.prototype.checkAnswer =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/levels.Level/CheckAnswer',
+      request,
+      metadata || {},
+      methodInfo_Level_CheckAnswer,
+      callback);
+};
+
+
+/**
+ * @param {!proto.levels.AnswerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.levels.AnswerResponse>}
+ *     A native promise that resolves to the response
+ */
+proto.levels.LevelPromiseClient.prototype.checkAnswer =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/levels.Level/CheckAnswer',
+      request,
+      metadata || {},
+      methodInfo_Level_CheckAnswer);
+};
+
+
 module.exports = proto.levels;
 
