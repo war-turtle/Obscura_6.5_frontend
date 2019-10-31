@@ -1,6 +1,6 @@
 import config from '../config';
 
-const { LevelRequest, AnswerRequest } = require('../proto/levels/levels_pb');
+const { LevelRequest, AnswerRequest, AllLevelRequest } = require('../proto/levels/levels_pb');
 const { LevelClient } = require('../proto/levels/levels_grpc_web_pb');
 
 const levelService = new LevelClient(config.LevelBackend, null, null);
@@ -14,6 +14,22 @@ export const getLevel = (levelNo, TeamID) => {
 
   return new Promise((resolve, reject) => {
     levelService.getLevel(request, { Authorization: `jwt ${token}` }, (err, res) => {
+      if (res) {
+        resolve(res.toObject());
+      } else if (err) {
+        reject(err);
+      }
+    });
+  });
+};
+
+export const getAllLevel = (TeamID) => {
+  const request = new AllLevelRequest();
+  request.setTeamid(TeamID);
+
+  const token = window.localStorage.getItem('token');
+  return new Promise((resolve, reject) => {
+    levelService.getAllLevel(request, { Authorization: `jwt ${token}` }, (err, res) => {
       if (res) {
         resolve(res.toObject());
       } else if (err) {
