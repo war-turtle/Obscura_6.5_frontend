@@ -8,8 +8,8 @@ const config = {
   prod: {
     ClientId:
       "770672030537-fs29b8dfck7ctm2038e26caq7qcm760i.apps.googleusercontent.com",
-    UsersBackend: "https://obscuranitkkr.co.in:8080/users",
-    LevelBackend: "https://obscuranitkkr.co.in:8080/players"
+    UsersBackend: "http://obscuranitkkr.co.in:8080/users",
+    LevelBackend: "http://obscuranitkkr.co.in:8080/players"
   }
 };
 
