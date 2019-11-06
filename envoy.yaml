@@ -18,7 +18,7 @@ static_resources:
                   name: obscura_proxy
                   virtual_hosts:
                     - name: obscura_service
-                      domains: ["*"]
+                      domains: ["obscuranitkkr.co.in"]
                       routes:
                         - match: { prefix: "/users/" }
                           route:
@@ -30,9 +30,6 @@ static_resources:
                             prefix_rewrite: "/"
                             cluster: levels_service
                             max_grpc_timeout: 0s
-                        - match: { prefix: "/" }
-                          route:
-                            cluster: frontend_service
                       cors:
                         allow_origin:
                           - "*"
@@ -45,6 +42,13 @@ static_resources:
                   - name: envoy.grpc_web
                   - name: envoy.cors
                   - name: envoy.router
+          tls_context:
+            common_tls_context:
+              tls_certificates:
+                - certificate_chain:
+                    filename: "/etc/example-com.crt"
+                  private_key:
+                    filename: "/etc/example-com.key"
   clusters:
     - name: users_service
       connect_timeout: 0.25s
@@ -58,9 +62,3 @@ static_resources:
       http2_protocol_options: {}
       lb_policy: round_robin
       hosts: [{ socket_address: { address: "levels", port_value: 9091 } }]
-    - name: frontend_service
-      connect_timeout: 0.25s
-      type: strict_dns
-      http2_protocol_options: {}
-      lb_policy: round_robin
-      hosts: [{ socket_address: { address: "frontend", port_value: 3000 } }]
