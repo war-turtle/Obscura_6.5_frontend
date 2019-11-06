@@ -18,7 +18,7 @@ static_resources:
                   name: obscura_proxy
                   virtual_hosts:
                     - name: obscura_service
-                      domains: ["obscuranitkkr.co.in"]
+                      domains: ["*"]
                       routes:
                         - match: { prefix: "/users/" }
                           route:
@@ -46,9 +46,9 @@ static_resources:
             common_tls_context:
               tls_certificates:
                 - certificate_chain:
-                    filename: "/etc/example-com.crt"
+                    filename: "/etc/self.crt"
                   private_key:
-                    filename: "/etc/example-com.key"
+                    filename: "/etc/self.key"
   clusters:
     - name: users_service
       connect_timeout: 0.25s
