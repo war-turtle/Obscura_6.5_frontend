@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 
 import { userFromLocalStore, clearUser } from '../../../actions/user';
@@ -47,16 +47,31 @@ class Container extends Component {
   render() {
     const { component, ...rest } = this.props;
     return (
-      <div className="ui container">
-        { parseInt(this.user.TeamID) !== 0 && this.props.teamid === '' ? (
+      <div>
+        {parseInt(this.user.TeamID) !== 0 && this.props.teamid === '' ? (
           <div className="ui active dimmer">
             <div className="ui large loader" />
           </div>
         ) : (
-          <Route
-            {...rest}
-            render={props => React.createElement(component, { user: this.user, ...props })}
-          />
+          <div>
+            <div className="ui three item menu" style={{ position: 'fixed', top: 0 }}>
+              <Link to="/dashboard" className="item">
+                <h3 style={{ color: 'var(--bg-color-primary)' }}>Dashboard</h3>
+              </Link>
+              <Link to="/level" className="item">
+                <h3 style={{ color: 'var(--bg-color-primary)' }}>Levels</h3>
+              </Link>
+              <Link className="item">
+                <h3 style={{ color: 'var(--bg-color-primary)' }}>Our Team</h3>
+              </Link>
+            </div>
+            <div className="ui container" style={{ marginTop: '100px' }}>
+              <Route
+                {...rest}
+                render={props => React.createElement(component, { user: this.user, ...props })}
+              />
+            </div>
+          </div>
         )}
       </div>
     );
