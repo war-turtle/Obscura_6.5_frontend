@@ -71,6 +71,13 @@ class Container extends Component {
                 render={props => React.createElement(component, { user: this.user, ...props })}
               />
             </div>
+            <div style={{ height: '40px'}}></div>
+            <a href="http://gawds.in" target="_blank" rel="noopener noreferrer" style={{position: 'fixed', bottom: '10px', right: '10px'}}>
+              <img src="/images/gawds.png" alt="sponser" height="30px"/>
+            </a>
+            <a href="http://bhaukal.store" target="_blank" rel="noopener noreferrer" style={{position: 'fixed', bottom: '10px', left: '10px'}}>
+              <img src="/images/bhaukal.png" alt="sponser" height="30px"/>
+            </a>
           </div>
         )}
       </div>

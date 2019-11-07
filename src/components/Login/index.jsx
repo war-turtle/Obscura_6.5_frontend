@@ -158,6 +158,28 @@ class LoginComponent extends Component {
               Google Login
             </button>
           </div>
+          
+          <div className="center-align" style={{color: "white", marginRight: "70px"}}>
+            <h2 className="obscura-sub-heading obscura-text-color">
+              Rules
+            </h2>
+            <p style={{fontSize: "20px"}}>
+              * Use of Google is permitted. Whats more, we recommend the use of Google.
+            </p>
+            <p style={{fontSize: "20px"}}>
+              * Upper case characters and spaces are not permitted in the answers.
+            </p>
+            <p style={{fontSize: "20px"}}>
+              * Out of the box thinking is encouraged as ObscurA puts up questions which require unconventional line of thought.
+            </p>
+            <p style={{fontSize: "20px"}}>
+              * We give hints only if asked properly.
+            </p>
+            <p style={{fontSize: "20px"}}>
+              * Keep an eye on our FB profile and Twitter handle as we will regularly post hints and updates there.
+            </p>
+          </div>
+
         </div>
       </div>
     );

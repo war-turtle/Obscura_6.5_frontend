@@ -107,7 +107,7 @@ class LevelComponent extends Component {
           </div>
         ) : (
           <h5 className="obscura-heading obscura-text-color">
-            woow! It's too early come back on 8th October around 6pm.
+            woow! It's too early, come back on 8th October around 6pm.
           </h5>
         )}
       </div>
