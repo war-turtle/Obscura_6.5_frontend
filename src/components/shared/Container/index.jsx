@@ -54,14 +54,14 @@ class Container extends Component {
           </div>
         ) : (
           <div>
-            <div className="ui three item menu" style={{ position: 'fixed', top: 0 }}>
+            <div className="ui three item menu" style={{ position: 'fixed', top: 0, zIndex: 5 }}>
               <Link to="/dashboard" className="item">
                 <h3 style={{ color: 'var(--bg-color-primary)' }}>Dashboard</h3>
               </Link>
               <Link to="/level" className="item">
                 <h3 style={{ color: 'var(--bg-color-primary)' }}>Levels</h3>
               </Link>
-              <Link className="item">
+              <Link to="/team" className="item">
                 <h3 style={{ color: 'var(--bg-color-primary)' }}>Our Team</h3>
               </Link>
             </div>

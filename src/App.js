@@ -10,6 +10,7 @@ import Container from './components/shared/Container';
 import history from './history';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
+import OurTeam from './components/OurTeam';
 
 const App = () => (
   <Router history={history}>
@@ -19,6 +20,7 @@ const App = () => (
       <Container path="/dashboard" component={Dashboard} />
       <Container exact path="/level" component={Level} />
       <Container exact path="/level/:id" component={LevelComponent} />
+      <Container exact path="/team" component={OurTeam}></Container>
     </Switch>
   </Router>
 );
