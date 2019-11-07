@@ -22,7 +22,6 @@ class AllTeams extends Component {
       })
       .catch((err) => {
         this.setState({ teamLoading: false });
-        console.log(err);
       });
   }
 
@@ -40,7 +39,6 @@ class AllTeams extends Component {
         })
         .catch((err) => {
           this.setState({ teamLoading: false });
-          console.log(err);
         });
     }
   };

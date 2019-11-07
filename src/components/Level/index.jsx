@@ -9,7 +9,6 @@ class Level extends Component {
   componentDidMount() {
     getAllLevel('adf')
       .then((res) => {
-        console.log(res);
         this.setState({ total: res.total });
       })
       .catch((err) => {

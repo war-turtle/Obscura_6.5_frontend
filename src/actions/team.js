@@ -21,19 +21,16 @@ export const createTeam = (name, imageNumber) => (dispatch, getState) => {
     })
     .catch((err) => {
       errorHandler(err);
-      console.log(err);
     });
 };
 
 export const getTeam = teamid => (dispatch) => {
   getTeamService(teamid)
     .then((res) => {
-      console.log(res);
       dispatch({ type: 'GET_TEAM', payload: res });
     })
     .catch((err) => {
       errorHandler(err);
-      console.log(err);
     });
 };
 

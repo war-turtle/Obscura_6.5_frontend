@@ -2,54 +2,74 @@ import React, { Component } from 'react';
 
 const developer = [
   {
-    name: 'Kartik Yadav',
+    name: 'Anshul Malik',
     url:
       'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnshulMalik.jpg',
   },
   {
-    name: 'Saurabh',
+    name: 'Anuj Sir',
     url:
-      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AryanKaul.jpg',
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnujSharma.jpg',
   },
   {
-    name: 'Saurabh',
-    url:
-      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AryanKaul.jpg',
-  },
-  {
-    name: 'Saurabh',
-    url:
-      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AryanKaul.jpg',
-  },
-  {
-    name: 'Saurabh',
-    url:
-      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AryanKaul.jpg',
-  },
-  {
-    name: 'Kartik Yadav',
+    name: 'Anshul Malik',
     url:
       'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnshulMalik.jpg',
   },
   {
-    name: 'Saurabh',
+    name: 'Anuj Sir',
     url:
-      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AryanKaul.jpg',
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnujSharma.jpg',
   },
   {
-    name: 'Saurabh',
+    name: 'Anshul Malik',
     url:
-      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AryanKaul.jpg',
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnshulMalik.jpg',
   },
   {
-    name: 'Saurabh',
+    name: 'Anuj Sir',
     url:
-      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AryanKaul.jpg',
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnujSharma.jpg',
   },
   {
-    name: 'Saurabh',
+    name: 'Anshul Malik',
     url:
-      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AryanKaul.jpg',
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnshulMalik.jpg',
+  },
+  {
+    name: 'Anuj Sir',
+    url:
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnujSharma.jpg',
+  },
+  {
+    name: 'Anshul Malik',
+    url:
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnshulMalik.jpg',
+  },
+  {
+    name: 'Anuj Sir',
+    url:
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnujSharma.jpg',
+  },
+  {
+    name: 'Anshul Malik',
+    url:
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnshulMalik.jpg',
+  },
+  {
+    name: 'Anuj Sir',
+    url:
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnujSharma.jpg',
+  },
+  {
+    name: 'Anshul Malik',
+    url:
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnshulMalik.jpg',
+  },
+  {
+    name: 'Anuj Sir',
+    url:
+      'https://raw.githubusercontent.com/war-turtle/Obscura_5.5_frontend/master/public/images/team/AnujSharma.jpg',
   },
 ];
 
@@ -60,14 +80,14 @@ class OurTeam extends Component {
         <h3 className="obscura-heading obscura-text-color">Meet the people behind ObscurA</h3>
         <h2 className="obscura-sub-heading obscura-text-color">Developer</h2>
         <div className="ui grid" style={{ textAlign: 'center' }}>
-          {developer.map(ele => (
-            <div className="four wide column" style={{ marginBottom: '30px' }}>
+          {developer.map((ele, id) => (
+            <div key={id} className="four wide column" style={{ marginBottom: '30px' }}>
               <div className="ui fluid card">
                 <div className="image">
-                  <img src={ele.url} height="200px" />
+                  <img src={ele.url} alt="team" height="200px" />
                 </div>
                 <div className="content">
-                  <a className="header">{ele.name}</a>
+                  <div className="header">{ele.name}</div>
                 </div>
               </div>
             </div>

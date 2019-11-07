@@ -17,7 +17,8 @@ class LevelComponent extends Component {
   };
 
   componentDidMount() {
-    getLevel(this.props.match.params.id, this.props.TeamId)
+    if(Date.now() >= 1573192800000){
+      getLevel(this.props.match.params.id, this.props.TeamId)
       .then((res) => {
         this.setState({ ...res, final: res.pb_final });
       })
@@ -27,6 +28,9 @@ class LevelComponent extends Component {
         }
         Toast(err.message, 'error');
       });
+    } else {
+      history.push('/level');
+    }
   }
 
   componentDidUpdate() {
@@ -49,7 +53,6 @@ class LevelComponent extends Component {
   submitAnswer = () => {
     checkAnswer(this.state.answer, this.state.number, this.props.TeamId)
       .then((res) => {
-        console.log(res);
         if (res.valid) {
           Toast('Right answer', 'success');
           history.push('/level');
@@ -74,7 +77,7 @@ class LevelComponent extends Component {
           </div>
         ) : this.state.final ? (
           <div className="obscura-heading obscura-text-color">Game Finished</div>
-        ) : (
+        ) : Date.now() >= 1573192800000 ? (
           <div style={{ textAlign: 'center' }}>
             <div className="obscura-heading obscura-text-color">{this.state.name}</div>
             <div
@@ -102,6 +105,10 @@ class LevelComponent extends Component {
               Submit
             </button>
           </div>
+        ) : (
+          <h5 className="obscura-heading obscura-text-color">
+            woow! It's too early come back on 8th October around 6pm.
+          </h5>
         )}
       </div>
     );

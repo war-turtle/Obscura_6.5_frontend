@@ -13,7 +13,6 @@ export const signIn = idToken => (dispatch) => {
     })
     .catch((err) => {
       errorHandler(err);
-      console.log(err);
       dispatch({ type: 'CLEAR_USER', payload: err });
     });
 };
