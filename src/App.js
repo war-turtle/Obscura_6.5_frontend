@@ -20,7 +20,7 @@ const App = () => (
       <Container path="/dashboard" component={Dashboard} />
       <Container exact path="/level" component={Level} />
       <Container exact path="/level/:id" component={LevelComponent} />
-      <Container exact path="/team" component={OurTeam}></Container>
+      <Container exact path="/team" component={OurTeam} />
     </Switch>
   </Router>
 );

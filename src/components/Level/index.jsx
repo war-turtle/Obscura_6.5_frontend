@@ -35,21 +35,29 @@ class Level extends Component {
           </div>
         ) : (
           <div>
-            <div className="obscura-heading obscura-text-color">Choose which level to play</div>
-            {Array.apply(null, Array(this.state.total)).map((elem, i) => (
-              <button
-                className="ui item white button large fluid basic"
-                key={i}
-                onClick={() => {
-                  this.props.history.push(`/level/${i}`);
-                }}
-                style={{ marginTop: '30px' }}
-              >
-                Level
-                {' '}
-                {i}
-              </button>
-            ))}
+            {Date.now() >= 1573192800000 ? (
+              <div>
+                <div className="obscura-heading obscura-text-color">Choose which level to play</div>
+                {Array.apply(null, Array(this.state.total)).map((elem, i) => (
+                  <button
+                    className="ui item white button large fluid basic"
+                    key={i}
+                    onClick={() => {
+                      this.props.history.push(`/level/${i}`);
+                    }}
+                    style={{ marginTop: '30px' }}
+                  >
+                    Level
+                    {' '}
+                    {i}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <h5 className="obscura-heading obscura-text-color">
+                woow! It's too early come back on 8th October around 6pm.
+              </h5>
+            )}
           </div>
         )}
       </div>
