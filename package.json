@@ -5,7 +5,7 @@
   "dependencies": {
     "google-protobuf": "^3.10.0",
     "grpc-web": "^1.0.6",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-kawaii": "^0.14.4",
